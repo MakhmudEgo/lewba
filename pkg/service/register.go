@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/streadway/amqp"
 	"log"
 	"matcha/pkg/model"
@@ -37,6 +38,7 @@ func (r *register) Exec(data []byte) (interface{}, error) {
 	}
 	// todo::service::register parsing and valid user
 
+	//todo::service::register::need to check for popular passwords
 	// todo::service::register if user ok
 	//todo::service::register::context
 	go func() {
@@ -45,6 +47,7 @@ func (r *register) Exec(data []byte) (interface{}, error) {
 		}
 	}()
 	//todo:://service::register::имитация, как-будто все хорошо
+	fmt.Printf("%#v\n", user)
 	return nil, nil
 }
 

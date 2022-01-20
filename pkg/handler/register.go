@@ -1,10 +1,8 @@
 package handler
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
-	"matcha/pkg/model"
 	"matcha/pkg/queue"
 	"matcha/pkg/repository"
 	"matcha/pkg/service"
@@ -21,7 +19,6 @@ func Register(db repository.UserDB) *register {
 }
 
 func (reg *register) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	user := &model.User{}
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -38,5 +35,4 @@ func (reg *register) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(201)
 	}
-	fmt.Printf("%#v\n", user)
 }
